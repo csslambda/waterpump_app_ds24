@@ -15,7 +15,7 @@ category-encoders = "*"
 notebook = "*"
 pandas = "==1.1.5"
 numpy = "==1.19.5"
-scipy = "*"
+scipy = "==1.5.4"
 
 [requires]
 python_version = "3"
