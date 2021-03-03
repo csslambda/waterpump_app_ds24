@@ -90,7 +90,7 @@ column1 = dbc.Col(
                 value='gravity',
                 className='mb-4'),
         dcc.Markdown('',id='prediction-content', style={
-        'textAlign': 'center',
+        'textAlign':'center',
         'font-size':30})
             ])
 
