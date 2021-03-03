@@ -105,7 +105,7 @@ def update_output_div(input_value):
     return 'The amount_tsh is {}'.format(input_value)
 
 @app.callback(
-    Output(component_id='my-output-latitude', component_property='children'),
+    Output(component_id='my-output-longitude', component_property='children'),
     [Input(component_id='longitude_slider_input', component_property='value')]
 )
 def update_output_div(input_value):
