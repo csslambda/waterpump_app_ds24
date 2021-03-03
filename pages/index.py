@@ -6,6 +6,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
 
+import pandas as pd
+
 # Imports from this application
 from app import app
 
@@ -29,20 +31,14 @@ column1 = dbc.Col(
 )
 
 
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split
-DATA_PATH = './notebooks/waterpumps/'
-# Merge train_features.csv & train_labels.csv
-train = pd.merge(pd.read_csv(DATA_PATH+'train_features.csv'), 
-                 pd.read_csv(DATA_PATH+'train_labels.csv'))
+train = pd.read_csv('./notebooks/train.csv')
 fig1 = px.pie(train, values='population', names='status_group', title='Population around different waterpumps')
-fig2 = px.scatter(train, x="population", y="amount_tsh", color="status_group",
-                 size='population', hover_data=['population'])
+fig2 = px.scatter(train, x="longitude", y="latitude", color="status_group", opacity=0.4)
 
 
-column2 = dbc.Col([dbc.Row(
-    [dcc.Graph(figure=fig1),]), dbc.Row([dcc.Graph(figure=fig2),])])
+column2 = dbc.Col([
+    dcc.Graph(figure=fig1),
+    dcc.Graph(figure=fig2)])
 
 
 layout = dbc.Row([column1, column2])

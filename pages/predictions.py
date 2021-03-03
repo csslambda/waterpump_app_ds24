@@ -48,14 +48,14 @@ column1 = dbc.Col(
             ##### latitidue
             """),
         dcc.Slider(
-            id='latitude_slider_input',
+            id='longitude_slider_input',
             min=29.607122,
             max=40.344301,
             step=0.5,
             marks={i: '{}'.format(i) for i in range(28, 42)},
             value=29.607122,
             className='mb-2'),
-        dcc.Markdown('', id='my-output-latitude'), 
+        dcc.Markdown('', id='my-output-longitude'), 
         dcc.Markdown(
             """
             ##### quantity
@@ -90,7 +90,8 @@ column1 = dbc.Col(
                 value='gravity',
                 className='mb-4'),
         dcc.Markdown('',id='prediction-content', style={
-        'textAlign': 'center'})
+        'textAlign': 'center',
+        'font-size':30})
             ])
 
 # https://dash.plotly.com/dash-core-components
@@ -105,10 +106,10 @@ def update_output_div(input_value):
 
 @app.callback(
     Output(component_id='my-output-latitude', component_property='children'),
-    [Input(component_id='latitude_slider_input', component_property='value')]
+    [Input(component_id='longitude_slider_input', component_property='value')]
 )
 def update_output_div(input_value):
-    return 'The latitude is {}'.format(input_value)
+    return 'The longitude is {}'.format(input_value)
 
 
 @app.callback(
@@ -117,7 +118,7 @@ def update_output_div(input_value):
       Input('amount_tsh_slider_input', 'value'),
       Input('water_point_input', 'value'),
       Input('extraction_type_class_input', 'value'),
-      Input('latitude_slider_input', 'value')
+      Input('longitude_slider_input', 'value')
      ])
 
 def predict(quantity,amount_tsh,waterpoint_type,extraction_type_class,longitude):
